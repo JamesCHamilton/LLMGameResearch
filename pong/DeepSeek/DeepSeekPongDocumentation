@@ -1,0 +1,19 @@
+# Model - Deepthink R1
+
+# Lines of code = 237
+
+# Notes ->
+
+Two-player paddle control (W/S and UP/DOWN).
+
+Ball bounces off paddles and walls. (doesn't bounce the ball right)
+
+Does not follow standard black and white colors or orginial pong UI
+
+renders a title
+
+Scoring system.
+
+Infinite game (until game close)
+
+<-

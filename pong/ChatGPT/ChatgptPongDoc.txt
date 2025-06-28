@@ -1,0 +1,21 @@
+# Model = GPT-4o
+
+# Lines of code = 97
+
+# Notes ->
+
+Two-player paddle control (W/S and UP/DOWN).
+
+Ball bounces off paddles and walls.
+
+Scoring system.
+
+Infinite game (until game close)
+
+* If a player scores then the ball will spawn in at the same angle that it was last past at.
+(Eg. if ball spawns in at 160 degrees spawning down and player two hits it and scores, the ball will respawn at the same
+angle and in the same direction)
+
+
+<-
+
