@@ -1,0 +1,10 @@
+Lines of Code = 345
+Prompt - create Space Invaders in pygame
+
+
+Aliens shoot too fast to survive more than 5 seconds
+NO ---UFO
+It pretty much fuly documented itself again in the README.md
+
+- Has a space-like background
+- Does not move faster over time 

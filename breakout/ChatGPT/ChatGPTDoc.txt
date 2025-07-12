@@ -1,0 +1,12 @@
+# GPT-4.0
+Prompt - Create breakout in Pygame
+
+
+Lines of COde = 106
+
+-Uses RGB color theme
+- Does not contain a score/lives
+- If you lose it simply respawns the ball and keeps going (you can just leave it and it will eventually win if you get lucky with the initial angle)
+- So technically you can't lose
+- if the ball clips the brick it will just destroy it and keep going
+

@@ -1,0 +1,16 @@
+# GPT 4.1
+
+# Lines of code = 94
+
+# Notes ->
+
+Two-player paddle control (W/S and UP/DOWN).
+
+Ball bounces off paddles and walls.
+
+Scoring system.
+
+Infinite game (until game close)
+
+<-
+

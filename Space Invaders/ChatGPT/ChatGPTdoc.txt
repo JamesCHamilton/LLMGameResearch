@@ -1,0 +1,22 @@
+# GPt 4.0
+# prompt = create Space Invaders in pygame
+Lines of Code = 111/106 (first/second attempts)
+
+
+Attempt One -->
+Traceback (most recent call last):
+  File "c:\Users\meela\Downloads\LLMGameResearch\Space Invaders\ChatGPT\SpaceInvaders.py", line 18, in <module>
+    player_img = pygame.image.load('player.png')  # 64x64
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: No file 'player.png' found in working directory 'C:\Us
+<---
+
+Second Attempt(copy and pasted Stack Trace) --->
+ 
+- There are 6 aliens total in the begining 
+- When one is shot it goes back to the top 
+- the score increments by one on enemy shot 
+- One enemy is un-shootable
+- When the alien makes it to the bottom and hits the edge
+the score increments and then it goes back to the top ( no dying/losing)
+

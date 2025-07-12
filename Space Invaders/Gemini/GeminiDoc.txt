@@ -1,0 +1,32 @@
+Prompt - create Space Invaders in pygame
+# Model = Gemini 2.5 Flash 
+Lines of Code (by the end) = 164
+
+First attempt fail 
+Traceback (most recent call last):
+  File "c:\Users\meela\Downloads\LLMGameResearch\Space Invaders\Gemini\SpaceInvaders.py", line 26, in <module>
+    player_img = pygame.image.load('https://placehold.co/64x64/00FF00/FFFFFF?text=Player') # Placeholder image
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: No file 'https://placehold.co/64x64/00FF00/FFFFFF?text=Player' found in working directory 'C:\Users\meela\Downloads\LLMGameResearch'.
+
+Second Attempt (generate all images needed for the game)
+ File "c:\Users\meela\Downloads\LLMGameResearch\Space Invaders\Gemini\SpaceInvaders.py", line 27, in <module>
+    player_img = pygame.image.load('https://placehold.co/64x64/00FF00/FFFFFF?text=PLAYER+SHIP')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: No file 'https://placehold.co/64x64/00FF00/FFFFFF?text=PLAYER+SHIP' found in working directory 'C:\Users\meela\Downloads\LLMGameResearch'.
+
+Same Issue
+
+Third Attempt(Just copied and pasted the Stack Trace)
+
+I Dont really know how to descirbe it
+Everything goes really fast
+Projectiles work but you can't really tell
+
+It is like if I were to vaguely describe the features of Space Invader without knowing what it actually was 
+
+In a sense it did make the game because every moves kinda like Space Invaders
+Kinda fun to look at
+
+Game does not end when you lose
+When alien if shot it goes back to top 

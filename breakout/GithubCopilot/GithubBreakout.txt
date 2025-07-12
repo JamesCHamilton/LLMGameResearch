@@ -1,0 +1,27 @@
+#GPT-4.1
+--- Did not work at all first time 
+
+Stack Trace --->
+Hello from the pygame community. https://www.pygame.org/contribute.html
+Traceback (most recent call last):
+  File "c:\Users\meela\Downloads\LLMGameResearch\breakout\GithubCopilot\breakout.py", line 159, in <module>
+    main()
+  File "c:\Users\meela\Downloads\LLMGameResearch\breakout\GithubCopilot\breakout.py", line 99, in main
+    ball.x += ball_dx
+              ^^^^^^^
+UnboundLocalError: cannot access local variable 'ball_dx' where it is not associated with a value
+<-----
+
+
+SECOND ITERATION 
+Prompt - Create breakout in Pygame
+Lines of code = 160 
+Fixed error by globalizing the ball_dx variable in main()
+--- Mono brick color
+# balls works 
+# allows ball to go offscreen before Game Over
+# NO A/D (keys)
+# No point system 
+# NO Lives
+# really big bricks 
+

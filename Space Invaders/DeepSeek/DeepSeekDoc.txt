@@ -1,0 +1,14 @@
+# Deepseek R1 DeepThink
+Lines of Code = 523
+Prompt - create Space Invaders in pygame
+
+Disney
+
+- "Aliens" move but very slowly
+- It provides "cover" that disappears after being shot a few times 
+but does not actually disappear (just hides it without removing hitbox)
+- The "aliens" do die when shot though
+- Everything is very animated and flashy
+
+
+- ONLY one to actually draw the barriers

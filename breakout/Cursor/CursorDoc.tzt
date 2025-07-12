@@ -1,0 +1,16 @@
+CURSOR
+Prompt - Create breakout in Pygame
+
+LINES of Code = 288
+
+# Multi color with score system and LIVES
+# Once Lives run out you are prompted to restart by pressing "R"
+# Everything motion wise works as intended 
+
+
+Side Notes -->
+
+It self documented without the need to prompted further
+Also made a requirements.txt file in which it instructed you to pip install from there
+The documentation it did was correct so there isn't much more to write here 
+<---

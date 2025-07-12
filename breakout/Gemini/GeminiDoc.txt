@@ -1,0 +1,18 @@
+# Model - 2.5 Flash 
+Lines of Code = 289
+Prompt - Create breakout in Pygame
+
+
+Contains multiple Lives
+Uses different colors
+when ball hits paddle on the edge it goes really fast (vrooom)
+Prompts you to presss SPACE in order to start (unlike others)
+
+
+
+
+
+
+
+
+Only one i beat first try :) 

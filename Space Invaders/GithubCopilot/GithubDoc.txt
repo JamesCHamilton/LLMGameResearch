@@ -1,0 +1,10 @@
+# Copliot GPT-4.1
+# Lines of Code = 126
+Prompt - create Space Invaders in pygame
+
+scaffolding of the game
+- Everything moves correctly 
+- enemies are simle shapes
+- no lives/score/level
+- shooting works 
+- no barriers like the rest of them besides Deepseek

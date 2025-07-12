@@ -1,0 +1,19 @@
+# Model - Gemini 2.5 Flash 
+
+# Lines of code = 136
+
+# Notes ->
+
+Two-player paddle control (W/S and UP/DOWN).
+
+Ball bounces off paddles and walls. 
+
+Does not follow standard black and white colors or orginial pong UI
+
+no middle line
+
+Scoring system.
+
+Infinite game (until game close)
+
+<-

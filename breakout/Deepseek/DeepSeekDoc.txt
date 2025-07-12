@@ -1,0 +1,18 @@
+# Deepseek DeepThink  (R1)
+Prompt - Create breakout in Pygame
+
+
+Lines of Code = 359
+
+
+-the brick breaks are animated but they come off the screen
+-the game gives you instructions at the bottom of the screen
+-the point system works and the game ends
+-the bounds are a little off on the ball but it is not very noticable
+- It created a placeolder function for sound_effects
+
+
+SideNote --->
+It seems like the theme Deepseek used was the same for when it created pong
+It also created the class GameState but did not pass in an ENUM is though it is being treated as one
+<---
