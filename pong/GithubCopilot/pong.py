@@ -49,45 +49,50 @@ def reset_ball():
 def main():
     global ball_speed_x, ball_speed_y, score_left, score_right
     running = True
+    game_over = False
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
-        # Paddle movement
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_w] and left_paddle.top > 0:
-            left_paddle.y -= PADDLE_SPEED
-        if keys[pygame.K_s] and left_paddle.bottom < HEIGHT:
-            left_paddle.y += PADDLE_SPEED
-        if keys[pygame.K_UP] and right_paddle.top > 0:
-            right_paddle.y -= PADDLE_SPEED
-        if keys[pygame.K_DOWN] and right_paddle.bottom < HEIGHT:
-            right_paddle.y += PADDLE_SPEED
-
-        # Ball movement
-        ball.x += ball_speed_x
-        ball.y += ball_speed_y
-
-        # Collision with top/bottom
-        if ball.top <= 0 or ball.bottom >= HEIGHT:
-            ball_speed_y *= -1
-
-        # Collision with paddles
-        if ball.colliderect(left_paddle) or ball.colliderect(right_paddle):
-            ball_speed_x *= -1
-
-        # Score
-        if ball.left <= 0:
-            score_right += 1
-            reset_ball()
-        if ball.right >= WIDTH:
-            score_left += 1
-            reset_ball()
-
+        if not game_over:
+            # Paddle movement
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_w] and left_paddle.top > 0:
+                left_paddle.y -= PADDLE_SPEED
+            if keys[pygame.K_s] and left_paddle.bottom < HEIGHT:
+                left_paddle.y += PADDLE_SPEED
+            if keys[pygame.K_UP] and right_paddle.top > 0:
+                right_paddle.y -= PADDLE_SPEED
+            if keys[pygame.K_DOWN] and right_paddle.bottom < HEIGHT:
+                right_paddle.y += PADDLE_SPEED
+            # Ball movement
+            ball.x += ball_speed_x
+            ball.y += ball_speed_y
+            # Collision with top/bottom
+            if ball.top <= 0 or ball.bottom >= HEIGHT:
+                ball_speed_y *= -1
+            # Collision with paddles
+            if ball.colliderect(left_paddle) or ball.colliderect(right_paddle):
+                ball_speed_x *= -1
+            # Score
+            if ball.left <= 0:
+                score_right += 1
+                reset_ball()
+            if ball.right >= WIDTH:
+                score_left += 1
+                reset_ball()
+            # Game over check
+            if score_left == 11 or score_right == 11:
+                game_over = True
         draw()
+        if game_over:
+            winner = "Left" if score_left == 11 else "Right"
+            msg = font.render(f"Game Over! {winner} Player Wins", True, WHITE)
+            screen.blit(msg, (WIDTH//2 - msg.get_width()//2, HEIGHT//2 - msg.get_height()//2))
+            pygame.display.flip()
+            pygame.time.wait(3000)
+            running = False
         clock.tick(FPS)
-
     pygame.quit()
     sys.exit()
 
