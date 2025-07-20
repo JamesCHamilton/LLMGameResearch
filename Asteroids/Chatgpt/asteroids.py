@@ -17,7 +17,7 @@ BLACK = (0, 0, 0)
 # Helper functions
 def wrap_position(pos):
     x, y = pos
-    return x % WIDTH, y % HEIGHT
+    return [x % WIDTH, y % HEIGHT]  # ✅ Return list, not tuple
 
 def angle_to_vector(angle):
     rad = math.radians(angle)
@@ -26,10 +26,10 @@ def angle_to_vector(angle):
 def distance(a, b):
     return math.hypot(a[0] - b[0], a[1] - b[1])
 
-# Classes
+# Ship class
 class Ship:
     def __init__(self):
-        self.position = [WIDTH / 2, HEIGHT / 2]  # <-- changed from tuple to list
+        self.position = [WIDTH / 2, HEIGHT / 2]  # ✅ List, not tuple
         self.velocity = [0, 0]
         self.angle = 0
         self.thrust = False
@@ -57,7 +57,8 @@ class Ship:
 
         self.velocity[0] *= 0.99
         self.velocity[1] *= 0.99
-    
+
+# Bullet class
 class Bullet:
     def __init__(self, pos, angle):
         vec = angle_to_vector(angle)
@@ -75,6 +76,7 @@ class Bullet:
     def draw(self):
         pygame.draw.circle(screen, WHITE, (int(self.position[0]), int(self.position[1])), self.radius)
 
+# Asteroid class
 class Asteroid:
     def __init__(self, pos=None, size=3):
         if pos:
@@ -122,8 +124,9 @@ while running:
         bullet = Bullet(ship.position[:], ship.angle)
         bullets.append(bullet)
 
-    # Update
+    # Update entities
     ship.update()
+
     for bullet in bullets[:]:
         bullet.update()
         if bullet.lifespan <= 0:
@@ -154,10 +157,11 @@ while running:
     for asteroid in asteroids:
         asteroid.draw()
 
+    # Score
     score_text = font.render(f"Score: {score}", True, WHITE)
     screen.blit(score_text, (10, 10))
 
-    # Refresh screen
+    # Refresh
     pygame.display.flip()
     clock.tick(60)
 
