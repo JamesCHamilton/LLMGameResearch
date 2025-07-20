@@ -62,10 +62,10 @@ class Ship:
         self.angle = (self.angle + SHIP_ROTATE_SPEED * direction) % 360
 
 class Asteroid:
-    def __init__(self):
-        self.size = random.randint(ASTEROID_MIN_SIZE, ASTEROID_MAX_SIZE)
-        self.x = random.randint(0, WIDTH)
-        self.y = random.randint(0, HEIGHT)
+    def __init__(self, x=None, y=None, size=None):
+        self.size = size if size else random.randint(ASTEROID_MIN_SIZE, ASTEROID_MAX_SIZE)
+        self.x = x if x is not None else random.randint(0, WIDTH)
+        self.y = y if y is not None else random.randint(0, HEIGHT)
         angle = random.uniform(0, 2 * math.pi)
         speed = random.uniform(ASTEROID_MIN_SPEED, ASTEROID_MAX_SPEED)
         self.vel_x = speed * math.cos(angle)
@@ -103,6 +103,8 @@ def main():
     bullets = []
     running = True
     game_over = False
+    score = 0
+    lives = 3
     while running:
         clock.tick(FPS)
         for event in pygame.event.get():
@@ -136,12 +138,26 @@ def main():
                     if asteroid.collide(bullet.x, bullet.y):
                         bullets.remove(bullet)
                         asteroids.remove(asteroid)
+                        score += 10
+                        # Split asteroid if large enough
+                        if asteroid.size > ASTEROID_MIN_SIZE + 10:
+                            for _ in range(2):
+                                asteroids.append(Asteroid(x=asteroid.x, y=asteroid.y, size=asteroid.size // 2))
                         break
             # Ship-asteroid collision
-            for asteroid in asteroids:
+            for asteroid in asteroids[:]:
                 if asteroid.collide(ship.x, ship.y):
-                    ship.alive = False
-                    game_over = True
+                    lives -= 1
+                    if lives <= 0:
+                        ship.alive = False
+                        game_over = True
+                    else:
+                        # Reset ship position and velocity
+                        ship.x = WIDTH // 2
+                        ship.y = HEIGHT // 2
+                        ship.vel_x = 0
+                        ship.vel_y = 0
+                    break
             # Win condition
             if not asteroids:
                 game_over = True
@@ -152,6 +168,11 @@ def main():
             asteroid.draw()
         for bullet in bullets:
             bullet.draw()
+        # Draw score and lives
+        score_text = font.render(f"Score: {score}", True, WHITE)
+        lives_text = font.render(f"Lives: {lives}", True, WHITE)
+        screen.blit(score_text, (20, 20))
+        screen.blit(lives_text, (20, 60))
         if game_over:
             if ship.alive:
                 msg = font.render("You Win! Press R to Restart", True, WHITE)

@@ -8,3 +8,7 @@ Rocks do not break into smaller pieces
 no lives or score
 used basic shapes to create everything
 
+Second attempt = OK
+
+Game is finite with five Asteroids
+Rest of features were implemented
