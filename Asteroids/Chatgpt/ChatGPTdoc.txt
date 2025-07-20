@@ -1,0 +1,5 @@
+Model - Chatgpt 4.0
+Lines of Code - 166
+Prompt - Create the game Asteroids using PyGame
+
+
