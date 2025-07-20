@@ -17,7 +17,7 @@ BLACK = (0, 0, 0)
 # Helper functions
 def wrap_position(pos):
     x, y = pos
-    return [x % WIDTH, y % HEIGHT]  # ✅ Return list, not tuple
+    return [x % WIDTH, y % HEIGHT]
 
 def angle_to_vector(angle):
     rad = math.radians(angle)
@@ -29,11 +29,12 @@ def distance(a, b):
 # Ship class
 class Ship:
     def __init__(self):
-        self.position = [WIDTH / 2, HEIGHT / 2]  # ✅ List, not tuple
+        self.position = [WIDTH / 2, HEIGHT / 2]
         self.velocity = [0, 0]
         self.angle = 0
         self.thrust = False
         self.radius = 15
+        self.invincible_timer = 0
 
     def draw(self):
         ang = math.radians(self.angle)
@@ -43,7 +44,9 @@ class Ship:
                 self.position[1] + math.sin(ang + 2.5) * self.radius)
         right = (self.position[0] + math.cos(ang - 2.5) * self.radius,
                  self.position[1] + math.sin(ang - 2.5) * self.radius)
-        pygame.draw.polygon(screen, WHITE, [tip, left, right])
+
+        if self.invincible_timer % 20 < 10:
+            pygame.draw.polygon(screen, WHITE, [tip, left, right])
 
     def update(self):
         if self.thrust:
@@ -57,6 +60,15 @@ class Ship:
 
         self.velocity[0] *= 0.99
         self.velocity[1] *= 0.99
+
+        if self.invincible_timer > 0:
+            self.invincible_timer -= 1
+
+    def reset(self):
+        self.position = [WIDTH / 2, HEIGHT / 2]
+        self.velocity = [0, 0]
+        self.angle = 0
+        self.invincible_timer = 120  # 2 seconds of invincibility
 
 # Bullet class
 class Bullet:
@@ -101,7 +113,9 @@ ship = Ship()
 bullets = []
 asteroids = [Asteroid() for _ in range(5)]
 score = 0
+lives = 3
 font = pygame.font.SysFont(None, 30)
+game_over = False
 
 # Main loop
 running = True
@@ -113,55 +127,67 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # Ship control
-    if keys[pygame.K_LEFT]:
-        ship.angle -= 5
-    if keys[pygame.K_RIGHT]:
-        ship.angle += 5
-    ship.thrust = keys[pygame.K_UP]
+    if not game_over:
+        # Controls
+        if keys[pygame.K_LEFT]:
+            ship.angle -= 5
+        if keys[pygame.K_RIGHT]:
+            ship.angle += 5
+        ship.thrust = keys[pygame.K_UP]
 
-    if keys[pygame.K_SPACE] and len(bullets) < 10:
-        bullet = Bullet(ship.position[:], ship.angle)
-        bullets.append(bullet)
+        if keys[pygame.K_SPACE] and len(bullets) < 10:
+            bullet = Bullet(ship.position[:], ship.angle)
+            bullets.append(bullet)
 
-    # Update entities
-    ship.update()
-
-    for bullet in bullets[:]:
-        bullet.update()
-        if bullet.lifespan <= 0:
-            bullets.remove(bullet)
-
-    for asteroid in asteroids[:]:
-        asteroid.update()
-
-        # Bullet-Asteroid Collision
+        # Update
+        ship.update()
         for bullet in bullets[:]:
-            if distance(bullet.position, asteroid.position) < asteroid.radius:
+            bullet.update()
+            if bullet.lifespan <= 0:
                 bullets.remove(bullet)
-                asteroids.remove(asteroid)
-                score += 10
-                if asteroid.size > 1:
-                    for _ in range(2):
-                        asteroids.append(Asteroid(asteroid.position, asteroid.size - 1))
-                break
 
-        # Ship-Asteroid Collision
-        if distance(ship.position, asteroid.position) < asteroid.radius + ship.radius:
-            running = False
+        for asteroid in asteroids[:]:
+            asteroid.update()
 
-    # Draw
-    ship.draw()
-    for bullet in bullets:
-        bullet.draw()
-    for asteroid in asteroids:
-        asteroid.draw()
+            # Bullet collision
+            for bullet in bullets[:]:
+                if distance(bullet.position, asteroid.position) < asteroid.radius:
+                    bullets.remove(bullet)
+                    asteroids.remove(asteroid)
+                    score += 10
+                    if asteroid.size > 1:
+                        for _ in range(2):
+                            asteroids.append(Asteroid(asteroid.position, asteroid.size - 1))
+                    break
 
-    # Score
-    score_text = font.render(f"Score: {score}", True, WHITE)
-    screen.blit(score_text, (10, 10))
+            # Ship collision
+            if ship.invincible_timer <= 0:
+                if distance(ship.position, asteroid.position) < asteroid.radius + ship.radius:
+                    lives -= 1
+                    ship.reset()
+                    if lives <= 0:
+                        game_over = True
 
-    # Refresh
+        # Draw
+        ship.draw()
+        for bullet in bullets:
+            bullet.draw()
+        for asteroid in asteroids:
+            asteroid.draw()
+
+        # HUD
+        score_text = font.render(f"Score: {score}", True, WHITE)
+        lives_text = font.render(f"Lives: {lives}", True, WHITE)
+        screen.blit(score_text, (10, 10))
+        screen.blit(lives_text, (10, 40))
+    else:
+        # Game Over screen
+        over_text = font.render("GAME OVER", True, WHITE)
+        score_text = font.render(f"Final Score: {score}", True, WHITE)
+        screen.blit(over_text, (WIDTH // 2 - 60, HEIGHT // 2 - 20))
+        screen.blit(score_text, (WIDTH // 2 - 70, HEIGHT // 2 + 10))
+
+    # Refresh screen
     pygame.display.flip()
     clock.tick(60)
 
