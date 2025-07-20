@@ -2,4 +2,14 @@ Model - Chatgpt 4.0
 Lines of Code - 166
 Prompt - Create the game Asteroids using PyGame
 
+First attempt = Failure 
+Trace = Traceback (most recent call last):
+  File "c:\Users\meela\Downloads\LLMGameResearch\Asteroids\Chatgpt\asteroids.py", line 127, in <module>
+    ship.update()
+  File "c:\Users\meela\Downloads\LLMGameResearch\Asteroids\Chatgpt\asteroids.py", line 55, in update
+    self.position[0] += self.velocity[0]
+    ~~~~~~~~~~~~~^^^
+TypeError: 'tuple' object does not support item assignment    
 
+
+Second Attempt - 

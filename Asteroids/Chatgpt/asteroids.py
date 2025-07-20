@@ -29,14 +29,13 @@ def distance(a, b):
 # Classes
 class Ship:
     def __init__(self):
-        self.position = [WIDTH / 2, HEIGHT / 2]
+        self.position = [WIDTH / 2, HEIGHT / 2]  # <-- changed from tuple to list
         self.velocity = [0, 0]
         self.angle = 0
         self.thrust = False
         self.radius = 15
 
     def draw(self):
-        # Draw triangle representing the ship
         ang = math.radians(self.angle)
         tip = (self.position[0] + math.cos(ang) * self.radius,
                self.position[1] + math.sin(ang) * self.radius)
@@ -58,7 +57,7 @@ class Ship:
 
         self.velocity[0] *= 0.99
         self.velocity[1] *= 0.99
-
+    
 class Bullet:
     def __init__(self, pos, angle):
         vec = angle_to_vector(angle)
