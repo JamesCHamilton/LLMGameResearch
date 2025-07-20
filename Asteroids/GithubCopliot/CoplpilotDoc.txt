@@ -1,0 +1,10 @@
+Model - Copilot GPT 4.1
+Lines of Code - 166
+Prompt - Create the game Asteroids using PyGame
+
+First attempt = OK 
+
+Rocks do not break into smaller pieces
+no lives or score
+used basic shapes to create everything
+

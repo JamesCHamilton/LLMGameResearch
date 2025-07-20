@@ -1,0 +1,9 @@
+Model - DeepSeek R1 DeepThink
+Lines of Code - 460
+Prompt - Create the game Asteroids using PyGame
+
+First attempt = OK
+
+All features were implemented the first attempt
+
+(Lowkey the most fun one)

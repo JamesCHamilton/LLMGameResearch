@@ -1,0 +1,7 @@
+Model - 2.5 Pro
+Lines of Code - 286
+Prompt - Create the game Asteroids using PyGame
+
+First attempt = OK
+
+All features were implemented first attempt
