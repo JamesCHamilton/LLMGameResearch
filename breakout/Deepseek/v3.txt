@@ -1,0 +1,5 @@
+ Model - Deepthink v3
+# Lines of code = 195
+
+
+First Attempt - OK

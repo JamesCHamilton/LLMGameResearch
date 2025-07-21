@@ -19,3 +19,14 @@ Infinite game (until game close)
 
 
 <-
+
+First Attempt - Failure 
+Trace = Traceback (most recent call last):
+  File "c:\Users\meela\Downloads\LLMGameResearch\Space Invaders\DeepSeek\space_invadersv3.py", line 195, in <module>
+    all_sprites.update()
+    ^^^^^^^^^^^
+NameError: name 'all_sprites' is not defined
+
+Second Attempt - OK
+
+All features were implemented
