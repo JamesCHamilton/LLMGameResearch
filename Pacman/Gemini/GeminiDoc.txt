@@ -1,0 +1,9 @@
+Model - Gemini flash 2.5
+Lines of Code - 588
+Prompt - Create the game Pac-man using PyGame
+
+First attempt = OK 
+
+Pac-man glitches into the maze
+The ghost do not move yet can still interact with Pac-man
+Power pellets make the ghost go blue but it still kills the player

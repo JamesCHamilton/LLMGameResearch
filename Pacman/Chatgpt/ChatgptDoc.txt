@@ -1,0 +1,15 @@
+
+
+First Attempt- Bug found 
+Trace = Traceback (most recent call last):
+  File "c:\Users\meela\Downloads\LLMGameResearch\Pacman\Chatgpt\pacman.py", line 124, in <module>
+    main()
+  File "c:\Users\meela\Downloads\LLMGameResearch\Pacman\Chatgpt\pacman.py", line 112, in main
+    pacman.move()
+  File "c:\Users\meela\Downloads\LLMGameResearch\Pacman\Chatgpt\pacman.py", line 61, in move
+    if self.can_move(self.dx, self.dy):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\meela\Downloads\LLMGameResearch\Pacman\Chatgpt\pacman.py", line 73, in can_move
+    if layout[new_y][new_x] != "1":
+       ~~~~~~~~~~~~~^^^^^^^
+IndexError: string index out of range
