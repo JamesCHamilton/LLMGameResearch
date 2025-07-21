@@ -163,6 +163,16 @@ def show_game_over_screen():
             if event.type == KEYUP:
                 waiting = False
 
+# Initialize sprite groups
+all_sprites = pygame.sprite.Group()
+player_bullets = pygame.sprite.Group()
+alien_bullets = pygame.sprite.Group()
+aliens = create_aliens()
+player = Player()
+all_sprites.add(player)
+alien_direction = 1
+alien_speed_increase = 0
+
 # Game loop
 game_over = False
 running = True
