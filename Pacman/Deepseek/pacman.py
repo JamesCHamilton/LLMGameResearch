@@ -93,16 +93,16 @@ class Pacman:
         
     def move(self):
         # Check if next direction is possible
-        next_x = self.x + self.next_direction[0]
-        next_y = self.y + self.next_direction[1]
+        next_x = round(self.x + self.next_direction[0])
+        next_y = round(self.y + self.next_direction[1])
         
         if 0 <= next_x < len(maze[0]) and 0 <= next_y < len(maze):
             if maze[next_y][next_x] != 1:
                 self.direction = self.next_direction
         
         # Move in current direction if possible
-        next_x = self.x + self.direction[0]
-        next_y = self.y + self.direction[1]
+        next_x = round(self.x + self.direction[0])
+        next_y = round(self.y + self.direction[1])
         
         if 0 <= next_x < len(maze[0]) and 0 <= next_y < len(maze):
             if maze[next_y][next_x] != 1:
@@ -201,26 +201,26 @@ class Ghost:
         if not self.frightened:
             # Different behavior for each ghost
             if self.name == "Blinky":  # Red ghost - chases directly
-                self.target = (pacman.x, pacman.y)
+                self.target = (round(pacman.x), round(pacman.y))
             elif self.name == "Pinky":  # Pink ghost - targets 4 tiles ahead of Pac-Man
                 if pacman.direction == RIGHT:
-                    self.target = (pacman.x + 4, pacman.y)
+                    self.target = (round(pacman.x) + 4, round(pacman.y))
                 elif pacman.direction == LEFT:
-                    self.target = (pacman.x - 4, pacman.y)
+                    self.target = (round(pacman.x) - 4, round(pacman.y))
                 elif pacman.direction == UP:
-                    self.target = (pacman.x, pacman.y - 4)
+                    self.target = (round(pacman.x), round(pacman.y) - 4)
                 elif pacman.direction == DOWN:
-                    self.target = (pacman.x, pacman.y + 4)
+                    self.target = (round(pacman.x), round(pacman.y) + 4)
                 else:
-                    self.target = (pacman.x, pacman.y)
+                    self.target = (round(pacman.x), round(pacman.y))
             elif self.name == "Inky":  # Cyan ghost - complex behavior
                 # Inky uses Blinky's position as reference
-                blinky_vector = (pacman.x - blinky.x, pacman.y - blinky.y)
-                self.target = (pacman.x + blinky_vector[0], pacman.y + blinky_vector[1])
+                blinky_vector = (round(pacman.x) - round(blinky.x), round(pacman.y) - round(blinky.y))
+                self.target = (round(pacman.x) + blinky_vector[0], round(pacman.y) + blinky_vector[1])
             elif self.name == "Clyde":  # Orange ghost - runs away when close
-                distance = math.sqrt((pacman.x - self.x)**2 + (pacman.y - self.y)**2)
+                distance = math.sqrt((round(pacman.x) - round(self.x))**2 + (round(pacman.y) - round(self.y))**2)
                 if distance > 8:
-                    self.target = (pacman.x, pacman.y)
+                    self.target = (round(pacman.x), round(pacman.y))
                 else:
                     self.target = (0, len(maze))  # Bottom left corner
         else:

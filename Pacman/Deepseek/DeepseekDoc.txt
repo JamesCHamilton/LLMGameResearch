@@ -11,3 +11,11 @@ Trace = Traceback (most recent call last):
        ~~~~^^^^^^^^
 TypeError: list indices must be integers or slices, not float
 
+Second attempt - Failure
+Trace - Traceback (most recent call last):
+  File "c:\Users\meela\Downloads\LLMGameResearch\Pacman\Deepseek\pacman.py", line 529, in <module>
+    pacman.move()
+  File "c:\Users\meela\Downloads\LLMGameResearch\Pacman\Deepseek\pacman.py", line 100, in move
+    if maze[next_y][next_x] != 1:
+       ~~~~^^^^^^^^
+TypeError: list indices must be integers or slices, not float
