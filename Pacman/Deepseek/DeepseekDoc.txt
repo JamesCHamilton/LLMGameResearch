@@ -19,3 +19,9 @@ Trace - Traceback (most recent call last):
     if maze[next_y][next_x] != 1:
        ~~~~^^^^^^^^
 TypeError: list indices must be integers or slices, not float
+
+Third attempt - OK
+Blinky is the only ghot that moves.
+everything else works
+no wrap arounds tho 
+ 
