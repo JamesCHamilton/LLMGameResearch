@@ -1,0 +1,8 @@
+Model - Chat GPT 4.0
+Lines of Code - 148
+Prompt - Create the game Donkey Kong using PyGame
+
+First Attempt - OK
+
+Drawn with simple shpaes creating the skeleton of Donkey-Kong
+Game was controllable yet not desired end. 

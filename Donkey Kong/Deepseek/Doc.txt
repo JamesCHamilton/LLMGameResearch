@@ -1,0 +1,7 @@
+Model - Deepseek v-3
+Lines of Code - 228
+Prompt - Create the game Donkey Kong using PyGame
+
+First Attempt - OK
+Drew stage in a pyramid shape in which the floors can be jumped through
+DK is to the side and drops non-moving barrels. 

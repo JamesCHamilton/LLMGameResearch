@@ -1,0 +1,8 @@
+Model - Claude 4.0
+Lines of Code - 168
+Prompt - Create the game Pac-man using PyGame
+
+First Attempt - OK
+
+But was in unplayable state. 
+Pac-man can move but exists in a box separated from ghosts. 

@@ -1,0 +1,7 @@
+Model - Claude 4.0 
+Lines of Code - 373
+Prompt - Create the game Donkey Kong using PyGame
+
+
+First Attempt - OK
+Best implementation of DK out of the LLMs

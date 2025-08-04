@@ -1,0 +1,7 @@
+Model - Deepseek v-3
+Lines of Code - 548
+Prompt - Create the game Donkey Kong using PyGame
+
+First Attempt - OK
+Besides the missing points and lives, it seems as if it got the skeleton right
+it is liek the beta of a DK game

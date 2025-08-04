@@ -1,0 +1,7 @@
+Model - Deepseek v-3
+Lines of Code - 548
+Prompt - Create the game Donkey Kong using PyGame
+
+First Attempt - OK
+Runs but is simply unplayable
+movement does not work and barrels move side to side which positive accerelation( i can't spell)
